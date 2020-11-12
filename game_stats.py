@@ -5,7 +5,8 @@ class GameStats:
 
         self.game_active = False
 
-        self.high_score = 0
+        with open('record.txt', 'r') as record:
+            self.high_score = int(record.read())
 
     def reset_stats(self):
         self.ships_left = self.settings.ship_limit

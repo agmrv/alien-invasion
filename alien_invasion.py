@@ -49,7 +49,7 @@ class AlienInvasion:
     def _check_events(self):
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                sys.exit()
+                self._exit()
             elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
             elif event.type == pygame.KEYUP:
@@ -68,9 +68,7 @@ class AlienInvasion:
 
         self.stats.reset_stats()
         self.stats.game_active = True
-        self.sb.prep_score()
-        self.sb.prep_level()
-        self.sb.prep_ships()
+        self.sb.prep_images()
 
         self.aliens.empty()
         self.bullets.empty()
@@ -86,7 +84,7 @@ class AlienInvasion:
         elif event.key == pygame.K_LEFT:
             self.ship.moving_left = True
         elif event.key in {pygame.K_q, pygame.K_ESCAPE}:
-            sys.exit()
+            self._exit()
         elif event.key == pygame.K_SPACE:
             self._fire_bullet()
         elif event.key == pygame.K_RETURN:  # Enter key
@@ -211,6 +209,11 @@ class AlienInvasion:
             self.play_button.draw_button()
 
         pygame.display.flip()
+
+    def _exit(self):
+        with open('record.txt', 'w') as record:
+            record.write(str(self.stats.high_score))
+        sys.exit()
 
 
 if __name__ == '__main__':
