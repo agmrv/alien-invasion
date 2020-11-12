@@ -5,7 +5,7 @@ class GameStats:
 
         self.game_active = False
 
-        with open('record.txt', 'r') as record:
+        with open('game/record.txt', 'r') as record:
             self.high_score = int(record.read())
 
     def reset_stats(self):

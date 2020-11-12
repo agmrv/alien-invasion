@@ -9,6 +9,9 @@ python = "^3.8"
 
 [tool.poetry.dev-dependencies]
 
+[tool.poetry.scripts]
+alien_invasion = "game.alien_invasion.py:main"
+
 [build-system]
 requires = ["poetry>=0.12"]
 build-backend = "poetry.masonry.api"
