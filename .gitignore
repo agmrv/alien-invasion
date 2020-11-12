@@ -1,2 +1,4 @@
 __pycache__/
 ai_venv/
+*.egg-info
+dist/
